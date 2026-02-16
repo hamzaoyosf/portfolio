@@ -1,0 +1,1098 @@
+html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #575757;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 102, 0);
+}
+
+::selection {
+    background-color: #008f07;
+    color: #fff;
+}
+
+/* Fonts */
+@font-face {
+    font-family: "origin_font";
+    src: url("Media/Fonts/origin_font/OCR-a___.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Typing Effect */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+/* Responsive */
+/* Mobile: Small */
+@media (max-width: 480px) {
+    .main-section {
+        max-width: 480px;
+    }
+
+    .highlights {
+        width: 100%;
+    }
+}
+
+/* Mobile: Large */
+@media (min-width: 390px) and (max-width: 767px) {
+    .main-section {
+        min-width: 471px;
+        max-width: 757px;
+        overflow: hidden;
+    }
+
+    .highlights {
+        width: 100%;
+    }
+}
+
+/* Tablet: Portait */
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-section {
+        min-width: 758px;
+        max-width: 981px;
+        overflow: hidden;
+    }
+
+    .highlights {
+        width: 100%;
+    }
+}
+
+/* Tablet: landscape / Small Laptop */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .main-section {
+        min-width: 982px;
+        max-width: 1189px;
+        overflow: hidden;
+    }
+
+    .highlights {
+        width: 41rem;
+    }
+}
+
+/* Desktop: medium */
+@media (min-width: 1200px) {
+    .main-section {
+        min-width: auto;
+        overflow: hidden;
+    }
+
+    .highlights {
+        width: 41rem;
+    }
+}
+
+/* Desktop: Large / 4K */
+@media (min-width: 1440px) {
+    .main-section {
+        min-width: auto;
+        overflow: hidden;
+    }
+
+    .highlights {
+        width: 41rem;
+    }
+}
+
+/* Body */
+body {
+    background-color: rgb(46, 46, 46);
+    padding: 10px;
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: "origin_font";
+    height: 98%;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: 100;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 0.75rem;
+    font-weight: 100;
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: 0.50rem;
+    font-weight: 100;
+}
+
+p,
+li {
+    font-size: 0.50rem;
+    font-weight: 100;
+}
+
+/* Main Section */
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 24, 24);
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@keyframes showe {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+/* Header Section */
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    overflow: visible;
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    perspective: 1000px;
+}
+
+.flip-inner {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.profile-picture:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-inner .front,
+.flip-inner .back {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+}
+
+.flip-inner .back {
+    transform: rotateY(180deg);
+}
+
+.profile-picture svg {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    fill: none;
+    stroke: #008f07;
+    stroke-width: 2px;
+    stroke-dasharray: 0.1;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+.full-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.full-name h1 {
+    margin: 0;
+    height: 40px;
+    text-align: center;
+}
+
+.full-name h2 {
+    color: #afafaf;
+    margin: 0;
+}
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 20px 0;
+}
+
+.headline h1 {
+    text-align: center;
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 40px;
+    text-align: center;
+}
+
+/* Cursor blink */
+.cursor {
+    display: inline-block;
+    width: 0;
+    height: 1.2em;
+    color: #55ff00;
+    margin-left: 0;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* Highlights Section */
+.highlights {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.highlights .highlight-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(200 200 200);
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+/* 3. Ensure the Highlight circle stays a circle */
+button.highlight {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 110px;
+    height: 110px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+/* 4. Accessibility: Add a subtle glow when using keyboard Tab */
+button:focus-visible {
+    outline: 2px solid #55ff00;
+    border-radius: 50%;
+}
+
+/* Highlight Settings */
+.highlight {
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    position: relative;
+}
+
+.highlight-container .highlight .svg-container {
+    width: 77px;
+    height: 77px;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: #979797 solid 1px;
+}
+
+.highlight-container .highlight .svg-icon {
+    width: 77px;
+    border-radius: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.highlight-container .highlight .svg-circle {
+    fill: none;
+    stroke: #afafaf;
+    stroke-width: 2px;
+    stroke-dasharray: 0.1;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    cursor: pointer;
+}
+
+.highlight-title h2 {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+/* Pop-Ups */
+.for-display {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: wrap;
+    border: 0;
+}
+
+.for-display.active {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    clip: auto;
+    white-space: wrap;
+}
+
+.for-display .pop-up {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(22, 22, 22);
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.for-display .pop-up .top-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 20px;
+    padding: 5px 20px;
+
+    /* The "frosted" look */
+    background: rgba(24, 24, 24, 0.0079);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    /* Safari support */
+
+    /* Defining the edges */
+    border-radius: 100px;
+
+    /* Adding depth */
+    /* box-shadow: 0 4px 30px rgb(24, 24, 24); */
+    z-index: 100
+}
+
+.for-display .pop-up .logo {
+    display: flex;
+    align-items: center;
+}
+
+.for-display .pop-up .logo img {
+    width: 60px;
+    height: 60px;
+    /* Ensure 1:1 aspect ratio */
+    border-radius: 100%;
+    /* outline: #ffffff solid 1.5px; */
+}
+
+.for-display .pop-up .logo .name {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.for-display .pop-up .logo h1 {
+    margin: 0;
+    font-size: 1rem;
+    text-align: start;
+    padding: 0;
+    line-height: 1.2;
+    color: #fff;
+    text-decoration: none;
+}
+
+.for-display .pop-up .logo h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: #c7c7c7;
+    text-decoration: none;
+}
+
+.for-display .pop-up .logo a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 5px 0;
+    gap: 5px;
+}
+
+.for-display .pop-up .close-button {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 80%;
+}
+
+.for-display .pop-up .close-button button {
+    width: 60px;
+    background-color: rgb(255, 255, 255);
+    color: #181818;
+    padding: 8px;
+    text-align: center;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* .for-display .pop-up .close-button button:hover {
+    background-color: #181818;
+    color: #ffffff;
+} */
+
+/* About me Pop-Up Section */
+.for-display .pop-up .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.for-display .pop-up .content h1 {
+    margin: 20px 0 0 0;
+}
+
+.for-display .pop-up .content img {
+    width: 350px;
+}
+
+.for-display .pop-up p {
+    max-width: 720px;
+    margin: 0;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0 2%;
+}
+
+/* My Work Pop-Up Section */
+.for-display .pop-up .content .gallery {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.for-display .pop-up .content .gallery .project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #121212;
+    border-radius: 15px;
+
+    /* FIX: Give the card a flexible but constrained width */
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.for-display .pop-up .content .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.for-display .pop-up .content .gallery .project-title {
+    max-width: 100%;
+    text-align: start;
+}
+
+.for-display .pop-up .content .gallery .project-title h1 {
+    margin: 10px;
+    font-size: 1.3rem;
+    color: #55ff00;
+}
+
+.for-display .pop-up .content .gallery .project-title .project-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 3.6em;
+    transition: max-height 0.4s ease, -webkit-line-clamp 0.4s;
+    margin-bottom: 10px;
+    padding: 0 2%;
+    color: #afafaf;
+}
+
+.for-display .pop-up .content .gallery .project.expanded .project-description {
+    display: block;
+    /* Disables the box clamp logic */
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    max-height: 1000px;
+    /* Large enough to fit any description */
+}
+
+/* Style the button */
+.read-more-btn {
+    background: none;
+    border: solid #008f07 1px;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.3s;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.read-more-btn:hover {
+    background: #333;
+    border: 1px solid #008f0700;
+}
+
+/* Skills Pop-Up Section */
+.for-display .pop-up .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+}
+
+.for-display .pop-up .skills-content {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.for-display .pop-up .content .it-skills {
+    display: block;
+    padding: 20px;
+    width: 450px;
+
+}
+
+.for-display .pop-up .content .it-skills .it-skills-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Modern CSS Counter Logic */
+@property --num {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+}
+
+:root {
+    --bg-color: #121212;
+    --bar-bg: #2a2a2a;
+    --accent-green: #55ff00;
+}
+
+.skills-card {
+    width: 450px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    gap: 15px;
+}
+
+/* Icon Styling */
+.skill-row i {
+    font-size: 28px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    /* Devicon comes with original brand colors using .colored class */
+}
+
+.bar-wrapper {
+    flex: 1;
+    height: 8px;
+    background: var(--bar-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: var(--accent-green);
+    transform-origin: left;
+    transform: scaleX(0);
+    /* Starts at 0 */
+    will-change: transform;
+    border-radius: 100px;
+}
+
+.it-skills-percentage {
+    width: 45px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: monospace;
+    counter-reset: percent var(--num);
+}
+
+.it-skills-percentage::after {
+    content: counter(percent) "%";
+}
+
+/* Specific styling for the circle percentage display */
+.business-skill .business-skills-percentage::after {
+    content: "%";
+}
+
+.business-skill .business-skills-percentage {
+    font-size: 1.2rem;
+    color: #55ff00;
+    width: auto;
+}
+
+/* 2. ADD THIS: Only animate when the pop-up is ACTIVE */
+.for-display.active .bar-fill {
+    animation: grow 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.2s;
+    /* Slight delay so it starts after the pop-up opens */
+}
+
+.for-display.active .it-skills-percentage {
+    animation: count 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+/* Keyframes */
+@keyframes grow {
+    to {
+        transform: scaleX(var(--target));
+    }
+}
+
+@keyframes count {
+    from {
+        --num: 0;
+    }
+
+    to {
+        --num: var(--target-num);
+    }
+}
+
+
+/* Business Skills Section */
+/* First Skills */
+.pop-up .business-skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.pop-up .business-skills h3 {
+    color: white;
+}
+
+.pop-up .business-skills .content {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up .business-skills .content .business-skill {
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    background: rgba(42, 42, 42, 0.3);
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.pop-up .business-skills .content .business-skill:hover {
+    background: rgba(85, 255, 0, 0.05);
+    border-color: rgba(85, 255, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.skill-progress-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+}
+
+.skill-progress-wrap>svg {
+    transform: rotate(-90deg);
+    /* Starts from top */
+}
+
+.skill-progress-wrap .bg,
+.skill-progress-wrap .progress {
+    fill: none;
+    stroke-width: 6;
+    /* Thicker line */
+    stroke-linecap: round;
+    /* Rounded ends */
+}
+
+.skill-progress-wrap .bg {
+    stroke: #2a2a2a;
+}
+
+/* 2. Remove static stroke-dashoffset calculations since they'll be dynamic */
+.skill-progress-wrap .progress {
+    stroke: #55ff00;
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 339.292;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: stroke-dashoffset;
+}
+
+.pop-up .business-skills .content .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.pop-up .business-skills .content .logo svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.pop-up .business-skills .content .logo .business-skills-percentage {
+    display: block;
+}
+
+
+/* Tools */
+.pop-up .tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.pop-up .tools-content {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+}
+
+@keyframes slide {
+    0% {
+        transform: translatex(0);
+    }
+
+    100% {
+        transform: translatex(-100%);
+    }
+}
+
+.pop-up .tools .logos {
+    display: inline-block;
+    animation: slide 20s linear infinite;
+}
+
+.pop-up .tools .tools-content .logos img {
+    width: auto;
+    height: 50px;
+    margin: 20px;
+}
+
+.pop-up .tools-content::after,
+.tools-content::before {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    z-index: 2;
+    content: "";
+}
+
+.pop-up .tools-content::before {
+    left: 0;
+    background: linear-gradient(to left, rgba(22, 22, 22, 0), rgb(22, 22, 22));
+}
+
+.pop-up .tools-content::after {
+    right: 0;
+    background: linear-gradient(to right, rgba(22, 22, 22, 0), rgb(22, 22, 22));
+}
+
+.headline {
+    font-family: monospace;
+    font-size: 2rem;
+}
+
+/* Stories Viewer Styles */
+.stories-content-wrapper {
+    padding: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.stories-viewer {
+    position: relative;
+    max-width: 450px;
+    height: 80vh;
+    background: #000;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.progress-bars {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 5px;
+    padding: 0 10px;
+    z-index: 10;
+}
+
+.progress-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(22, 22, 22, 0.596);
+}
+
+.story-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.story-image-container img,
+.story-image-container video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+}
+
+/* Show active media */
+.stories-viewer.type-image #current-story-img {
+    display: block;
+}
+
+.stories-viewer.type-video #current-story-vid {
+    display: block;
+}
+
+.stories-viewer.type-text #current-story-text {
+    display: flex;
+}
+
+.story-text-overlay {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 20px;
+    background: linear-gradient(45deg, #181818, #333);
+    border-radius: 15px;
+    line-height: 1.4;
+}
+
+.story-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 5;
+}
+
+.nav-left,
+.nav-right {
+    flex: 1;
+    cursor: pointer;
+}
+
+/* Mobile adjustments for story viewer */
+@media (max-width: 480px) {
+    .stories-viewer {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        border-radius: 15px;
+    }
+    .story-image-container img,
+    .story-image-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+}
+
+/* UI Refinement: No background on top-head only for story pop-up */
+#story-pop-up .top-head {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    top: 4px;
+}
