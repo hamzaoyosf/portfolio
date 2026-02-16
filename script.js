@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    window.back = () => window.history.back();
-
     // ==========================================
     // PART 1: TYPEWRITER ANIMATION (RESTORED)
     // ==========================================
@@ -85,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- CORE: MODAL HANDLER --- */
     let isModalBusy = false;
+    let activeModalCloseFn = null;
 
     function setupModalTrigger(triggerId, modalId) {
         const triggerBtn = document.getElementById(triggerId);
@@ -123,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Remove animation style
                 const existingStyle = document.getElementById(styleId);
                 if (existingStyle) existingStyle.remove();
+
+                // PUSH STATE FOR BACK BUTTON
+                history.pushState({ modalId: modalId }, "");
+                activeModalCloseFn = closeModal;
 
                 // Show Modal
                 modal.classList.add('active');
@@ -192,12 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. CLOSE LOGIC
         if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
+            closeBtn.addEventListener('click', () => {
+                history.back(); // Triggers popstate
+            });
         }
 
         // Close on Escape key
         modal.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') history.back();
         });
 
         function closeModal() {
@@ -215,10 +220,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 stopStories();
             }
 
-            window.back();
+            activeModalCloseFn = null;
             isModalBusy = false;
         }
     }
+
+    // Handle back button / history navigation
+    window.addEventListener('popstate', (event) => {
+        if (activeModalCloseFn) {
+            activeModalCloseFn();
+        }
+    });
 
     /* --- FOCUS TRAP (ACCESSIBILITY) --- */
     function trapFocus(e) {
