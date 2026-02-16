@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    window.back = () => window.history.back();
+
     // ==========================================
     // PART 1: TYPEWRITER ANIMATION (RESTORED)
     // ==========================================
@@ -213,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 stopStories();
             }
 
+            window.back();
             isModalBusy = false;
         }
     }
