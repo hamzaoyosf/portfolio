@@ -296,6 +296,7 @@ li {
 
 .headline h1 {
     text-align: center;
+    font-family: "origin_font";
 }
 
 .typewriter {
@@ -473,18 +474,10 @@ button:focus-visible {
     position: sticky;
     top: 20px;
     padding: 5px 20px;
-
-    /* The "frosted" look */
     background: rgba(24, 24, 24, 0.0079);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    /* Safari support */
-
-    /* Defining the edges */
+    -webkit-backdrop-filter: blur(15px); /* Safari support */
     border-radius: 100px;
-
-    /* Adding depth */
-    /* box-shadow: 0 4px 30px rgb(24, 24, 24); */
     z-index: 100
 }
 
@@ -496,9 +489,7 @@ button:focus-visible {
 .for-display .pop-up .logo img {
     width: 60px;
     height: 60px;
-    /* Ensure 1:1 aspect ratio */
     border-radius: 100%;
-    /* outline: #ffffff solid 1.5px; */
 }
 
 .for-display .pop-up .logo .name {
@@ -556,11 +547,6 @@ button:focus-visible {
     font-weight: bold;
 }
 
-/* .for-display .pop-up .close-button button:hover {
-    background-color: #181818;
-    color: #ffffff;
-} */
-
 /* About me Pop-Up Section */
 .for-display .pop-up .content {
     display: flex;
@@ -604,8 +590,6 @@ button:focus-visible {
     gap: 20px;
     background-color: #121212;
     border-radius: 15px;
-
-    /* FIX: Give the card a flexible but constrained width */
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
@@ -644,11 +628,9 @@ button:focus-visible {
 
 .for-display .pop-up .content .gallery .project.expanded .project-description {
     display: block;
-    /* Disables the box clamp logic */
     -webkit-line-clamp: unset;
     line-clamp: unset;
     max-height: 1000px;
-    /* Large enough to fit any description */
 }
 
 /* Style the button */
@@ -732,7 +714,6 @@ button:focus-visible {
     width: 30px;
     display: flex;
     justify-content: center;
-    /* Devicon comes with original brand colors using .colored class */
 }
 
 .bar-wrapper {
@@ -750,7 +731,6 @@ button:focus-visible {
     background: var(--accent-green);
     transform-origin: left;
     transform: scaleX(0);
-    /* Starts at 0 */
     will-change: transform;
     border-radius: 100px;
 }
@@ -779,11 +759,9 @@ button:focus-visible {
     width: auto;
 }
 
-/* 2. ADD THIS: Only animate when the pop-up is ACTIVE */
 .for-display.active .bar-fill {
     animation: grow 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     animation-delay: 0.2s;
-    /* Slight delay so it starts after the pop-up opens */
 }
 
 .for-display.active .it-skills-percentage {
@@ -864,23 +842,19 @@ button:focus-visible {
 
 .skill-progress-wrap>svg {
     transform: rotate(-90deg);
-    /* Starts from top */
 }
 
 .skill-progress-wrap .bg,
 .skill-progress-wrap .progress {
     fill: none;
     stroke-width: 6;
-    /* Thicker line */
     stroke-linecap: round;
-    /* Rounded ends */
 }
 
 .skill-progress-wrap .bg {
     stroke: #2a2a2a;
 }
 
-/* 2. Remove static stroke-dashoffset calculations since they'll be dynamic */
 .skill-progress-wrap .progress {
     stroke: #55ff00;
     stroke-dasharray: 339.292;
@@ -978,7 +952,6 @@ button:focus-visible {
 }
 
 /* Stories Viewer Styles */
-/* Stories Viewer Styles - Instagram Aesthetic */
 .stories-content-wrapper {
     padding: 0 !important;
     height: 100% !important;
@@ -1152,7 +1125,6 @@ button:focus-visible {
     height: 100%;
     display: flex;
     z-index: 8;
-    /* Below header, above media */
 }
 
 .nav-left,
@@ -1193,7 +1165,59 @@ button:focus-visible {
     }
 }
 
-/* UI Refinement: No background on top-head only for story pop-up */
+/* Stories Interaction Icons */
+.story-status-icon {
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.pause-icon {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 12px;
+}
+
+.pause-icon svg {
+    fill: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.mute-toggle {
+    top: 75px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 6px;
+    pointer-events: auto;
+    display: flex;
+}
+
+.stories-viewer:not(.type-video) .mute-toggle {
+    display: none !important;
+}
+
+.mute-toggle svg {
+    fill: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.stories-viewer.paused .pause-icon {
+    display: flex;
+}
+
 #story-pop-up .top-head {
     background: transparent;
     backdrop-filter: none;

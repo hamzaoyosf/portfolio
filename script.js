@@ -277,38 +277,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- STORIES LOGIC ---
     let storiesData = [
-        { type: 'image', url: 'Media/Images/story.jpg', duration: 5000 },
-        // { type: 'image', url: 'Media/Images/CSVJSON.jpg', duration: 5000 },
-        // { type: 'image', url: 'Media/Images/DNChecker.jpg', duration: 5000 },
-        // { type: 'image', url: 'Media/Images/hamzaoyosf-about-me-img.png', duration: 5000 }
+        { type: 'image', url: 'Media/Images/story.jpg', duration: 5000 }
     ];
 
+    // Single source for hardcoded stories to avoid duplication
+    const DEFAULT_STORIES = [...storiesData];
+
     async function fetchStoriesFromNotion() {
-        // const NOTION_ID = "30938f129e8180a7a01ff74ec2c42cb3";
-        const API_URL = `https://notion-api.splitbee.io/v1/table/30938f129e8180a7a01ff74ec2c42cb3`;
-
         try {
-            const response = await fetch(API_URL);
-            if (!response.ok) throw new Error("Failed to fetch stories");
-            const data = await response.json();
+            const response = await fetch('/api/stories');
 
-            // Transform Notion data to our format
-            const transformedData = data
-                .filter(item => item.Status === "Published")
-                .map(item => ({
-                    type: (item.Type || 'image').toLowerCase(),
-                    url: (item.Media && item.Media.length > 0) ? item.Media[0].url : '',
-                    text: item.TextContent || '',
-                    duration: item.Duration || 5000
-                }));
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.error || `API Error: ${response.status}`);
+            }
 
-            if (transformedData.length > 0) {
+            const transformedData = await response.json();
+
+            if (transformedData && transformedData.length > 0) {
                 storiesData = transformedData;
-                console.log("Stories updated from Notion:", storiesData);
+                console.log("Successfully synced stories from API:", storiesData);
             }
         } catch (error) {
-            console.error("Notion Fetch Error:", error);
-            // Fallback to hardcoded storiesData already defined
+            console.error("Notion API Fetch Error:", error.message);
+            console.log("Falling back to local storiesData.");
+            storiesData = DEFAULT_STORIES;
         }
     }
 
@@ -317,9 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentStoryIndex = 0;
     let storyTimer = null;
-    let storyStartTime = null;
     let storyDuration = 5000;
     let isStoryPaused = false;
+    let pressStartTime = 0;
+    let pauseTimeout = null;
 
     const storiesViewer = document.getElementById('stories-viewer');
     const storyImg = document.getElementById('current-story-img');
@@ -328,6 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBarsContainer = document.getElementById('story-progress-bars');
     const prevBtn = document.getElementById('story-prev');
     const nextBtn = document.getElementById('story-next');
+    const muteToggle = document.getElementById('story-mute-toggle');
+    const pauseIndicator = document.getElementById('story-pause-indicator');
 
     function startStories() {
         currentStoryIndex = 0;
@@ -355,45 +351,125 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentStoryIndex = index;
         const story = storiesData[index];
-        storyDuration = story.duration || 5000;
+        isStoryPaused = false;
+        storiesViewer.classList.remove('paused');
 
-        // Reset Media visibility via class on storiesViewer
+        // Reset Media visibility
         storiesViewer.className = 'stories-viewer type-' + story.type;
 
-        // Handle Media Loading
+        const startTimer = (duration) => {
+            storyDuration = duration;
+            storyStartTime = Date.now();
+            updateProgressBars(index, duration);
+            clearTimeout(storyTimer);
+            storyTimer = setTimeout(nextStory, duration);
+        };
+
         if (story.type === 'video') {
             storyVid.src = story.url;
             storyVid.currentTime = 0;
-            storyVid.play().catch(e => console.log("Video play error:", e));
-        } else if (story.type === 'image') {
-            storyImg.src = story.url;
-            storyVid.pause();
-        } else if (story.type === 'text') {
-            storyText.textContent = story.text;
-            storyVid.pause();
-        }
 
-        // Update progress bars state
+            // Audio by default
+            storyVid.muted = false;
+            updateMuteUI();
+
+            storyVid.play().catch(e => {
+                console.log("Video play error (possibly blocked audio):", e);
+                // If blocked by browser, we might need to fallback to muted to at least show the video
+                if (e.name === 'NotAllowedError') {
+                    storyVid.muted = true;
+                    updateMuteUI();
+                    storyVid.play();
+                }
+            });
+
+            // Dynamic duration for video
+            if (storyVid.readyState >= 1) { // metadata already loaded
+                startTimer(storyVid.duration * 1000);
+            } else {
+                storyVid.onloadedmetadata = () => {
+                    startTimer(storyVid.duration * 1000);
+                };
+            }
+        } else {
+            if (story.type === 'image') {
+                storyImg.src = story.url;
+            } else if (story.type === 'text') {
+                storyText.textContent = story.text;
+            }
+            storyVid.pause();
+            startTimer(story.duration || 5000);
+        }
+    }
+
+    function updateProgressBars(index, duration, remaining = null) {
         const bars = progressBarsContainer.querySelectorAll('.progress-bar-fill');
         bars.forEach((bar, i) => {
             if (i < index) {
                 bar.style.width = '100%';
                 bar.style.transition = 'none';
             } else if (i === index) {
-                bar.style.width = '0%';
-                bar.style.transition = 'none';
-                // Trigger reflow
-                bar.offsetHeight;
-                bar.style.transition = `width ${storyDuration}ms linear`;
-                bar.style.width = '100%';
+                if (remaining !== null) {
+                    // Resuming
+                    bar.style.transition = `width ${remaining}ms linear`;
+                    bar.style.width = '100%';
+                } else {
+                    // Starting fresh
+                    bar.style.width = '0%';
+                    bar.style.transition = 'none';
+                    bar.offsetHeight; // Reflow
+                    bar.style.transition = `width ${duration}ms linear`;
+                    bar.style.width = '100%';
+                }
             } else {
                 bar.style.width = '0%';
                 bar.style.transition = 'none';
             }
         });
+    }
 
-        clearTimeout(storyTimer);
-        storyTimer = setTimeout(nextStory, storyDuration);
+    function togglePause(pause) {
+        if (pause && !isStoryPaused) {
+            isStoryPaused = true;
+            storiesViewer.classList.add('paused');
+            clearTimeout(storyTimer);
+
+            // Calculate elapsed time
+            const elapsed = Date.now() - storyStartTime;
+            storyDuration -= elapsed;
+
+            // Freeze progress bar
+            const activeBar = progressBarsContainer.querySelectorAll('.progress-bar-fill')[currentStoryIndex];
+            if (activeBar) {
+                const computedWidth = window.getComputedStyle(activeBar).width;
+                activeBar.style.width = computedWidth;
+                activeBar.style.transition = 'none';
+            }
+
+            if (storiesData[currentStoryIndex].type === 'video') storyVid.pause();
+        } else if (!pause && isStoryPaused) {
+            isStoryPaused = false;
+            storiesViewer.classList.remove('paused');
+
+            storyStartTime = Date.now();
+            updateProgressBars(currentStoryIndex, null, storyDuration);
+            storyTimer = setTimeout(nextStory, storyDuration);
+
+            if (storiesData[currentStoryIndex].type === 'video') storyVid.play().catch(() => { });
+        }
+    }
+
+    function toggleMute() {
+        storyVid.muted = !storyVid.muted;
+        updateMuteUI();
+    }
+
+    function updateMuteUI() {
+        const icon = document.getElementById('mute-icon-svg');
+        if (icon) {
+            icon.querySelector('.unmuted').style.display = storyVid.muted ? 'none' : 'block';
+            icon.querySelector('.muted').style.display = storyVid.muted ? 'block' : 'none';
+        }
     }
 
     function nextStory() {
@@ -428,27 +504,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (closeBtn) closeBtn.click();
     }
 
-    if (prevBtn) prevBtn.addEventListener('click', prevStory);
-    if (nextBtn) nextBtn.addEventListener('click', nextStory);
+    // Single click/tap handler for navigation areas
+    const handleNavClick = (direction) => {
+        const pressDuration = Date.now() - pressStartTime;
+        if (pressDuration < 200) { // Only navigate if it was a short tap
+            if (direction === 'next') nextStory();
+            else prevStory();
+        }
+    };
 
-    // Pause functionality (optional but good)
-    if (storyImg) {
-        storyImg.addEventListener('mousedown', () => {
-            clearTimeout(storyTimer);
-            const activeBar = progressBarsContainer.querySelectorAll('.progress-bar-fill')[currentStoryIndex];
-            if (activeBar) {
-                const computedStyle = window.getComputedStyle(activeBar);
-                activeBar.style.width = computedStyle.width;
-                activeBar.style.transition = 'none';
-            }
-        });
+    if (prevBtn) prevBtn.addEventListener('click', () => handleNavClick('prev'));
+    if (nextBtn) nextBtn.addEventListener('click', () => handleNavClick('next'));
 
-        storyImg.addEventListener('mouseup', () => {
-            // For simplicity, just restart current story from where it was or just next
-            // Real implementation would track remaining time. Let's just resume with next for now or restart.
-            showStory(currentStoryIndex);
-        });
-    }
+    if (muteToggle) muteToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMute();
+    });
+
+    // Hold to Pause Logic
+    const startPause = (e) => {
+        if (e.target.closest('#story-mute-toggle')) return;
+        pressStartTime = Date.now();
+
+        // Delay pause activation slightly to avoid flicker on taps
+        pauseTimeout = setTimeout(() => {
+            togglePause(true);
+        }, 150);
+    };
+
+    const endPause = () => {
+        clearTimeout(pauseTimeout);
+        if (isStoryPaused) {
+            togglePause(false);
+        }
+    };
+
+    storiesViewer.addEventListener('mousedown', startPause);
+    storiesViewer.addEventListener('mouseup', endPause);
+    storiesViewer.addEventListener('mouseleave', endPause);
+    storiesViewer.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) startPause(e);
+    }, { passive: true });
+    storiesViewer.addEventListener('touchend', endPause);
 
     // --- READ MORE LOGIC ---
     document.querySelectorAll('.read-more-btn').forEach(button => {
