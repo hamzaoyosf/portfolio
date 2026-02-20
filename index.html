@@ -8,47 +8,12 @@
     <meta name="description"
         content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
 
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://prod-files-secure.s3.us-west-2.amazonaws.com">
 
     <link rel="dns-prefetch" href="https://www.linkedin.com">
     <link rel="dns-prefetch" href="https://github.com">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    </noscript>
-
-    <meta name="author" content="Hamza Ouyoussef">
-    <link rel="canonical" href="https://hamza.oyosf.com/">
-    <meta name="robots" content="index, follow">
-
-    <meta name="theme-color" content="#50ff00">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="Media/Images/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="Media/Images/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="Media/Images/favicon_io/favicon-16x16.png">
-    <link rel="mask-icon" href="Media/Images/favicon_io/safari-pinned-tab.svg" color="#50ff00">
-    <link rel="manifest" href="Media/Images/favicon_io/site.webmanifest">
-
-    <meta property="og:site_name" content="Hamza Ouyoussef">
-    <meta property="og:title" content="Hamza Ouyoussef | Quality Assurance Specialist (QA Engineer)">
-    <meta property="og:description"
-        content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
-    <meta property="og:image" content="https://hamza.oyosf.com/Media/Images/Social.avif">
-    <meta property="og:url" content="https://hamza.oyosf.com">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_MA">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@hamzaoyosf">
-    <meta name="twitter:creator" content="@hamzaoyosf">
-    <meta name="twitter:title" content="Hamza Ouyoussef | Quality Assurance Specialist (QA Engineer)">
-    <meta name="twitter:description"
-        content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
-    <meta name="twitter:image" content="https://hamza.oyosf.com/Media/Images/X.avif">
+    <link rel="preload" href="Media/Fonts/OCR-a___.ttf" as="font" type="font/ttf" crossorigin>
 
     <style>
         html {
@@ -57,6 +22,132 @@
             overflow: hidden;
         }
 
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #575757;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(0, 102, 0);
+        }
+
+        ::selection {
+            background-color: #008f07;
+            color: #fff;
+        }
+
+        /* Fonts */
+        @font-face {
+            font-family: "origin_font";
+            src: url("Media/Fonts/OCR-a___.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Typing Effect */
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* Responsive */
+        /* Mobile: Small */
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .main {
+                border-radius: 0;
+            }
+
+            .highlights {
+                width: 100%;
+            }
+        }
+
+        /* Mobile: Large */
+        @media (min-width: 390px) and (max-width: 767px) {
+            .main-section {
+                min-width: 471px;
+                max-width: 757px;
+                overflow: hidden;
+            }
+
+            .highlights {
+                width: 100%;
+            }
+        }
+
+        /* Tablet: Portait */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .main-section {
+                min-width: 758px;
+                max-width: 981px;
+                overflow: hidden;
+            }
+
+            .highlights {
+                width: 100%;
+            }
+        }
+
+        /* Tablet: landscape / Small Laptop */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .main-section {
+                min-width: 982px;
+                max-width: 1189px;
+                overflow: hidden;
+            }
+
+            .highlights {
+                width: 41rem;
+            }
+        }
+
+        /* Desktop: medium */
+        @media (min-width: 1200px) {
+            .main-section {
+                min-width: auto;
+                overflow: hidden;
+            }
+
+            .highlights {
+                width: 41rem;
+            }
+        }
+
+        /* Desktop: Large / 4K */
+        @media (min-width: 1440px) {
+            .main-section {
+                min-width: auto;
+                overflow: hidden;
+            }
+
+            .highlights {
+                width: 41rem;
+            }
+        }
+
+        /* Body */
         body {
             background-color: rgb(46, 46, 46);
             padding: 10px;
@@ -67,13 +158,6 @@
             font-family: "origin_font";
             height: 98%;
             overflow-x: hidden;
-        }
-
-        @font-face {
-            font-family: "origin_font";
-            src: url("Media/Fonts/OCR-a___.ttf") format("truetype");
-            font-weight: normal;
-            font-style: normal;
         }
 
         h1 {
@@ -88,6 +172,24 @@
             margin-bottom: 0.75rem;
         }
 
+        h3 {
+            font-size: 0.75rem;
+            font-weight: 100;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-size: 0.50rem;
+            font-weight: 100;
+        }
+
+        p,
+        li {
+            font-size: 0.50rem;
+            font-weight: 100;
+        }
+
+        /* Main Section */
         .main {
             display: flex;
             flex-direction: column;
@@ -102,6 +204,17 @@
             overflow: hidden;
         }
 
+        @keyframes showe {
+            0% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        /* Header Section */
         .profile-picture {
             width: 140px;
             height: 140px;
@@ -129,6 +242,18 @@
             left: 50%;
             margin-top: -50px;
             margin-left: -50px;
+        }
+
+        .profile-picture:hover .flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .profile-picture .flip-inner .front {
+            transform: rotateY(0deg);
+        }
+
+        .profile-picture .flip-inner .back {
+            transform: rotateY(180deg);
         }
 
         .profile-picture .flip-inner .front,
@@ -193,6 +318,15 @@
             font-family: "origin_font";
         }
 
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 40px;
+            text-align: center;
+        }
+
+        /* Cursor blink */
         .cursor {
             display: inline-block;
             width: 0;
@@ -214,13 +348,27 @@
             }
         }
 
+        .sr-only {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+
+        /* Highlights Section */
         .highlights {
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
         }
 
-        .highlight-container {
+        .highlights .highlight-container {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -233,8 +381,10 @@
             margin: 0;
             cursor: pointer;
             font-family: inherit;
+            text-decoration: none;
         }
 
+        /* 3. Ensure the Highlight circle stays a circle */
         button.highlight {
             background: transparent;
             border: none;
@@ -248,6 +398,20 @@
             justify-content: center;
             align-items: center;
             outline: none;
+        }
+
+        /* 4. Accessibility: Add a subtle glow when using keyboard Tab */
+        button:focus-visible {
+            outline: 2px solid #55ff00;
+            border-radius: 50%;
+        }
+
+        /* Highlight Settings */
+        .highlight {
+            width: 110px;
+            height: 110px;
+            overflow: hidden;
+            position: relative;
         }
 
         .highlight-container .highlight .svg-container {
@@ -282,24 +446,74 @@
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 0;
-            }
+        .highlight-title h2 {
+            cursor: pointer;
+            padding: 0;
+            margin: 0;
+        }
 
-            .main {
-                border-radius: 0;
-            }
+        /* Pop-Ups */
+        .for-display {
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: wrap;
+            border: 0;
+        }
 
-            .highlights {
-                width: 100%;
-            }
+        .for-display.active {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+            clip: auto;
+            white-space: wrap;
         }
     </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    </noscript>
+
     <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="style.css">
     </noscript>
+
+    <meta name="author" content="Hamza Ouyoussef">
+    <link rel="canonical" href="https://hamza.oyosf.com/">
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" content="#50ff00">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="Media/Images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Media/Images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Media/Images/favicon_io/favicon-16x16.png">
+    <link rel="mask-icon" href="Media/Images/favicon_io/safari-pinned-tab.svg" color="#50ff00">
+    <link rel="manifest" href="Media/Images/favicon_io/site.webmanifest">
+
+    <meta property="og:site_name" content="Hamza Ouyoussef">
+    <meta property="og:title" content="Hamza Ouyoussef | Quality Assurance Specialist (QA Engineer)">
+    <meta property="og:description"
+        content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
+    <meta property="og:image" content="https://hamza.oyosf.com/Media/Images/Social.avif">
+    <meta property="og:url" content="https://hamza.oyosf.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_MA">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamzaoyosf">
+    <meta name="twitter:creator" content="@hamzaoyosf">
+    <meta name="twitter:title" content="Hamza Ouyoussef | Quality Assurance Specialist (QA Engineer)">
+    <meta name="twitter:description"
+        content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
+    <meta name="twitter:image" content="https://hamza.oyosf.com/Media/Images/X.avif">
 
     <script type="application/ld+json">
     {
@@ -332,9 +546,9 @@
                 <button class="profile-picture" id="profile-picture" aria-label="Open About Me">
                     <div class="flip-inner">
                         <img fetchpriority="high" src="Media/Images/hamzaoyosf-img.avif" alt="Hamza Ouyoussef"
-                            class="front">
+                            class="front" width="100" height="100">
                         <img fetchpriority="high" src="Media/Images/BLACK_LOGO.avif" alt="Hamza Ouyoussef Back"
-                            class="back">
+                            class="back" width="100" height="100">
                     </div>
                     <svg class="svg-circle" viewbox="0 0 100 100">
                         <circle cx="50" cy="50" r="40" />
@@ -546,7 +760,8 @@
                             </div>
                         </div>
                         <div class="project">
-                            <img fetchpriority="high" src="Media/Images/CSVJSON.avif" alt="Second Project">
+                            <img fetchpriority="high" src="Media/Images/CSVJSON.avif" alt="Second Project" width="400"
+                                height="225" style="aspect-ratio: 16/9;">
                             <div class="project-title">
                                 <h1>Test Design and Test Execution for CSVJSON</h1>
                                 <p class="project-description">I performed a comprehensive test design and test
@@ -556,7 +771,8 @@
                             </div>
                         </div>
                         <div class="project">
-                            <img fetchpriority="high" src="Media/Images/DNChecker.avif" alt="Third Project">
+                            <img fetchpriority="high" src="Media/Images/DNChecker.avif" alt="Third Project" width="400"
+                                height="225" style="aspect-ratio: 16/9;">
                             <div class="project-title">
                                 <h1>Development of Domain Name Checker Project (Vibe Coding)</h1>
                                 <p class="project-description">I vibe coded a Domain Name Checker that allows users to

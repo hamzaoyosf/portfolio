@@ -36,6 +36,7 @@ html {
     src: url("Media/Fonts/OCR-a___.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 /* Typing Effect */
@@ -476,7 +477,8 @@ button:focus-visible {
     padding: 5px 20px;
     background: rgba(24, 24, 24, 0.0079);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
+    -webkit-backdrop-filter: blur(15px);
+    /* Safari support */
     border-radius: 100px;
     z-index: 100
 }
