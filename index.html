@@ -5,15 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamza Ouyoussef - Quality Assurance Specialist (QA Engineer)</title>
-    <meta name="description" content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
+    <meta name="description"
+        content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
 
-    <link href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link href="https://prod-files-secure.s3.us-west-2.amazonaws.com">
 
     <link rel="dns-prefetch" href="https://www.linkedin.com">
     <link rel="dns-prefetch" href="https://github.com">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    </noscript>
 
     <meta name="author" content="Hamza Ouyoussef">
     <link rel="canonical" href="https://hamza.oyosf.com/">
@@ -44,7 +50,256 @@
         content="Hi! I’m Hamza Ouyoussef—a Quality Assurance Specialist & QA Analyst dedicated to protecting the technical integrity and revenue of modern digital platforms (Web Applications, SaaS, Vibe Coding Apps)">
     <meta name="twitter:image" content="https://hamza.oyosf.com/Media/Images/X.avif">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: rgb(46, 46, 46);
+            padding: 10px;
+            margin: 0;
+            color: white;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-family: "origin_font";
+            height: 98%;
+            overflow-x: hidden;
+        }
+
+        @font-face {
+            font-family: "origin_font";
+            src: url("Media/Fonts/OCR-a___.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 100;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+            font-weight: 100;
+            margin-bottom: 0.75rem;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(24, 24, 24);
+            margin: 0;
+            padding: 0;
+            border-radius: 30px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .profile-picture {
+            width: 140px;
+            height: 140px;
+            overflow: visible;
+            position: relative;
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+            perspective: 1000px;
+        }
+
+        .flip-inner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+        }
+
+        .profile-picture .flip-inner .front,
+        .profile-picture .flip-inner .back {
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            cursor: pointer;
+        }
+
+        .profile-picture .flip-inner .back {
+            transform: rotateY(180deg);
+        }
+
+        .profile-picture svg {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            fill: none;
+            stroke: #008f07;
+            stroke-width: 2px;
+            stroke-dasharray: 0.1;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            pointer-events: none;
+        }
+
+        .full-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .full-name h1 {
+            margin: 0;
+            height: 40px;
+            text-align: center;
+        }
+
+        .full-name h2 {
+            color: #afafaf;
+            margin: 0;
+        }
+
+        .headline {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            padding: 20px 0;
+        }
+
+        .headline h1 {
+            text-align: center;
+            font-family: "origin_font";
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 0;
+            height: 1.2em;
+            color: #55ff00;
+            margin-left: 0;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        .highlights {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .highlight-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: rgb(200 200 200);
+            text-align: center;
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        button.highlight {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            width: 110px;
+            height: 110px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+        }
+
+        .highlight-container .highlight .svg-container {
+            width: 77px;
+            height: 77px;
+            border-radius: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            border: #979797 solid 1px;
+        }
+
+        .highlight-container .highlight .svg-icon {
+            width: 77px;
+            border-radius: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+
+        .highlight-container .highlight .svg-circle {
+            fill: none;
+            stroke: #afafaf;
+            stroke-width: 2px;
+            stroke-dasharray: 0.1;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0;
+            }
+
+            .main {
+                border-radius: 0;
+            }
+
+            .highlights {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+    </noscript>
 
     <script type="application/ld+json">
     {

@@ -33,7 +33,7 @@ html {
 /* Fonts */
 @font-face {
     font-family: "origin_font";
-    src: url("Media/Fonts/origin_font/OCR-a___.ttf") format("truetype");
+    src: url("Media/Fonts/OCR-a___.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
