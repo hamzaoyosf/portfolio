@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (el) {
         const suffixes = [
             "a QA Analyst",
-            "ChatBot/LLM Tester",
-            "Accessibility Tester",
+            // "ChatBot/LLM Tester",
+            // "Accessibility Tester",
             "Errors Hunter",
-            "UX Tester",
+            // "UX Tester",
         ];
 
         let index = 0;
