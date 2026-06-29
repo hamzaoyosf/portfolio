@@ -55,7 +55,7 @@ export default async function handler(req, res) {
             const type = p.Type?.select?.name || "image";
 
             // Duration: number type
-            const duration = p.Duration?.number || 5000;
+            const duration = p.Duration?.number || 1000;
 
             return {
                 type: type.toLowerCase(),
